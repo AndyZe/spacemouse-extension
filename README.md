@@ -28,9 +28,16 @@ With your device plugged in, you should now be able to run `lsusb` and see an en
 
 Create a udev rule in `/etc/udev/rules.d/99-spacemouse.rules` to correctly configure the permissions for the device (using the IDs you just acquired with `lsusb`):
 
-    SUBSYSTEM=="usb", ATTRS{idVendor}=="256f", ATTRS{idProduct}=="c652", MODE="0666", SYMLINK+="spacemouse"
+    SUBSYSTEM=="hidraw", ATTRS{idVendor}=="256f", ATTRS{idProduct}=="c652", MODE="0666", SYMLINK+="spacemouse"
 
-Unplug and plug back in the device and you should see `/dev/spacemouse` appear in the filesystem, indicating that the rules took effect.
+Unplug and plug back in the device. Reload the udev rules:
+
+    ```
+    sudo udevadm control --reload-rules
+    sudo udevadm trigger
+    ```
+
+Now you should see `/dev/spacemouse` appear in the filesystem, indicating that the rules took effect.
 
 ## Usage
 
