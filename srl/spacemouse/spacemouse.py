@@ -46,6 +46,7 @@ class SpaceMouse:
         self._unexpected_close_callback = None
         self._control_rate = control_rate
 
+        self.device = None
         self.thread = None
         self._stop_event = threading.Event()
 
