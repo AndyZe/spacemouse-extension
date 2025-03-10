@@ -44,7 +44,7 @@ Now you should see `/dev/spacemouse` appear in the filesystem, indicating that t
 You must include this ext as a dependency in your `extension.toml`:
     ```
     [dependencies]
-    "srl.spacemouse" = {}
+    "spacemouse-extension" = {}
     ```
 
 Then you have two choices of how to use the device in your extension.
